@@ -1,0 +1,48 @@
+body {
+  background-color: pink;
+  color: white;
+  font-family: Tahoma;
+  font-size: 20px;
+}
+
+#frame {
+  border: 10px solid white;
+  border-radius: 25px;
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  font-size: 30px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#timer {
+  padding-top: 20%;
+  font-size: 30px;
+  margin: 0 auto;
+}
+
+.btn {
+  background-color: white;
+  border-color: black;
+  border-radius: 25px;
+  color: pink; 
+  padding: 13px 17px;
+  font-size: 16px;
+  cursor: pointer; 
+  margin: 0 5%;
+}
+
+#time-left {
+  font-size: 50px;
+  color: white;
+}
