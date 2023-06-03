@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react'
+import React from 'react' 
+import '../node_modules/font-awesome/css/font-awesome.min.css';
+
 
 let time = [];
 for (let i = 59; i >= 1; i--) {
@@ -39,6 +41,10 @@ export class App extends React.Component{
       timeLeft: min.indexOf("25"),
       sec: 0
     } 
+    this.manageClock = this.manageClock.bind(this);
+    this.restart = this.restart.bind(this);
+    this.increment = this.increment.bind(this)
+    this.decrement = this.decrement.bind(this)
   }
   
   manageClock() {
@@ -114,6 +120,8 @@ export class App extends React.Component{
   }
   
   restart() {
+    beep.pause();
+    beep.load();
     oper = false;
     clearInterval(interval);
     this.setState({
@@ -213,24 +221,24 @@ export class App extends React.Component{
             
             <p id="break-label"><strong>Break Length</strong></p>
             <span>
-              <button id="break-decrement" className="btn" onClick={() => this.decrement("db").bind(this)}><i className="fa fa-arrow-down"></i></button>
+              <button id="break-decrement" className="btn" onClick={() => this.decrement("db")}><i className="fa fa-arrow-down"></i></button>
              
               <span id="break-length">{this.state.breakVal}</span>
               
               
-              <button id="break-increment" className="btn" onClick={() => this.increment("ib").bind(this)}><i className="fa fa-arrow-up "></i></button>
+              <button id="break-increment" className="btn" onClick={() => this.increment("ib")}><i className="fa fa-arrow-up "></i></button>
             </span>
           </div>
           <div className='column'>
             
             <p id="session-label"><strong>Session Length</strong></p>
             <span>
-              <button id="session-decrement" className="btn" onClick={() => this.decrement("ds").bind(this)}><i className="fa fa-arrow-down"></i></button>
+              <button id="session-decrement" className="btn" onClick={() => this.decrement("ds")}><i className="fa fa-arrow-down"></i></button>
              
               <span id="session-length">{this.state.sessionVal}</span>
               
               
-              <button id="session-increment" className="btn" onClick={() => this.increment("is").bind(this)}><i className="fa fa-arrow-up "></i></button>
+              <button id="session-increment" className="btn" onClick={() => this.increment("is")}><i className="fa fa-arrow-up "></i></button>
             </span>
           </div>
         </div>
@@ -238,14 +246,15 @@ export class App extends React.Component{
           <h4 id="timer-label">{this.state.state}</h4>
           <p id="time-left">{min[this.state.timeLeft]}:{time[this.state.sec]}</p>
           <span>
-            <button onClick={this.manageClock.bind(this)} id="start_stop" class="btn"><i class="fa fa-play-circle-o"></i></button>
-            <button id="reset" onClick={this.restart.bind(this)} class="btn"><i class="fa fa-refresh"></i></button>
+            <button onClick={this.manageClock} id="start_stop" className="btn"><i className="fa fa-play-circle-o"></i></button>
+            <button id="reset" onClick={this.restart} className="btn"><i className="fa fa-refresh"></i></button>
           </span>
         </div>
         </div>
     )
   }
 }
+
 
 
 export default App;
